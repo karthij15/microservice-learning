@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: label-test-k8-rs
+  labels:
+    app: label-test-k8
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: label-test-k8
+  template:
+    metadata:
+      labels:
+        app: label-test-k8
+    spec:
+      containers:
+      - name: k8s-demo
+        image: arjunachari12/k8s-demo
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
